@@ -1,0 +1,17 @@
+p{
+    font-size: 18px;
+}
+
+.pokemonTile{
+    border: 1px solid black;
+    width: 160px;
+    height: 160px;
+    text-align: center;
+}
+
+.pocketdex-wrapper{
+    ul{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
