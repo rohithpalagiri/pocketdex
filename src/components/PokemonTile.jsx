@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import TypeColors from '../TypeColors';
+import classNames from "classnames"
 import axios from "axios";
 
 const PokemonTile = ({ data }) => {
@@ -17,14 +19,17 @@ const PokemonTile = ({ data }) => {
     }, []);
 
     return (
-        <li className="pokemonTile">
-            <Link to={`/pokedex/${pokemonData.id}`}>
-                {pokemonData.sprites ? <img src={pokemonData.sprites.front_default} /> : ''}
-                <div>
-                    {pokemonData.name}
-                </div>
-            </Link>
-        </li>
+        <>
+            {pokemonData.types && <li className={"pokemonTile " + "primary-" + pokemonData.types[0].type.name + " " +  (pokemonData.types[1] ? "secondary-" + pokemonData.types[1].type.name : "")}>
+                <Link to={`/pokedex/${pokemonData.id}`}>
+                    {pokemonData.sprites ? <img src={pokemonData.sprites.front_default} /> : ''}
+                    <div>
+                        {pokemonData.name}
+                    </div>
+                </Link>
+            </li>}
+        </>
+
     )
 }
 
