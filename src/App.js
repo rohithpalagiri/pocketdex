@@ -7,14 +7,18 @@ import Home from './components/Home'
 import Grid from '@material-ui/core/Grid';
 import PokemonTile from './components/PokemonTile';
 import PokedexEntry from './components/PokedexEntry'
+import { useSelector, useDispatch } from 'react-redux'
 
 import axios from "axios";
 
 function App() {
   const [pokemonList, setPokemonList] = useState([]);
+  // const count = useSelector(state => state)
+
+  // console.log("This is the count: ", count);
   useEffect(() => {
     const fetchData = async () => {
-      let response = await axios.get('https://pokeapi.co/api/v2/pokemon/');
+      let response = await axios.get('https://pokeapi.co/api/v2/pokemon/?limit=100');
       setPokemonList(response.data.results)
       return response;
     };

@@ -29,3 +29,4 @@ const PokemonTile = ({ data }) => {
 }
 
 export default PokemonTile;
+

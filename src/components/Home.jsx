@@ -1,5 +1,9 @@
 import React from 'react';
 import PokemonTile from './PokemonTile';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import loadReducer from '../reducers/loadReducer'
+import { useDispatch } from 'react-redux'
+
 
 const Home = ({ pokemonList }) => {
 
