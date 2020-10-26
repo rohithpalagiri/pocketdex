@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import Paper from '@material-ui/core/Paper';
 import Pokeball from '../images/pokeball.svg';
 import classNames from "classnames"
 import axios from "axios";
@@ -38,7 +37,7 @@ const PokemonTile = ({ data }) => {
         <>
             {pokemonData.types && <li className={tileClass}>
                 <Link to={`/pokedex/${pokemonData.id}`}>
-                    {pokemonData.sprites ? <img src={pokemonData.sprites.front_default} /> : <img src={Pokeball} />}
+                    {pokemonData.sprites ? <img src={pokemonData.sprites.front_default} alt="pokemon-sprite" /> : <img src={Pokeball} alt="pokeball" />}
                     <div className={"pokemon-name"}>
                         {pokemonData.name}
                     </div>

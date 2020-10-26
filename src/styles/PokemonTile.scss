@@ -40,6 +40,8 @@ $colors-list:(
     height: 160px;
     margin: 10px;
     text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
 
     @each $key,$val in $colors-list{
         &.primary-#{$key} {
@@ -102,8 +104,19 @@ $colors-list:(
             justify-content: center;
             height: fit-content;
             align-self: center;
-            max-width: 100px;
+            transition: transform 0.26s ease;
+        }
+
+        &:hover{
+            img{
+                transition: all 0.3s;
+                transform: scale(1.1);
+            }
         }
     }
 }
 
+//TODO Need to find better location for this
+#root{
+    background-color: lavender;
+}
