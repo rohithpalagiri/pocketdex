@@ -8,6 +8,7 @@ const Home = ({ pokemonList, fetchMorePokemon }) => {
     const style={
         display: 'flex',
         flexWrap: 'wrap',
+        justifyContent: 'center',
     }
 
     return (
@@ -26,7 +27,7 @@ const Home = ({ pokemonList, fetchMorePokemon }) => {
                     }
                 >
                     {pokemonList.map((x) => {
-                        return <PokemonTile key={x.name} data={x} />
+                        return <PokemonTile elevation={3} key={x.name} data={x} />
                     })}
                 </InfiniteScroll>
             </ul>
