@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom"
+import StatsChart from './StatsChart';
+import QuickInfo from './QuickInfo';
+import { useParams } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+
 import axios from "axios";
+
+
+
 
 const PokedexEntry = () => {
 
@@ -11,6 +17,8 @@ const PokedexEntry = () => {
     const [pokemon, setPokemon] = useState([]);
     const [genus, setGenus] = useState("");
     const [types, setTypes] = useState([]);
+    const [stats, setStats] = useState([]);
+    const [quickInfo, setQuickInfo] = useState({})
     const [speciesData, setSpeciesData] = useState([]);
 
     useEffect(() => {
@@ -28,6 +36,27 @@ const PokedexEntry = () => {
 
                     let types = pokemonResponse.data.types.map((x) => x.type.name)
                     setTypes(types)
+
+                    let stats = pokemonResponse.data.stats.map((x) => x.base_stat)
+                    setStats(stats)
+
+                    let height = pokemonResponse.data.height;
+                    let weight = pokemonResponse.data.weight;
+                    let catchRate = speciesReponse.data.capture_rate;
+                    let eggGroups = speciesReponse.data.egg_groups.map((x) => x.name)
+                    let genderRate = speciesReponse.data.gender_rate;
+                    let abilities = pokemonResponse.data.abilities.map((x) => x.ability.name)
+
+                    setQuickInfo({
+                        height: height,
+                        weight: weight,
+                        catchRate: catchRate,
+                        eggGroups: eggGroups,
+                        genderRate: genderRate,
+                        abilities: abilities
+                    })
+
+                    console.log({quickInfo})
                 }))
 
             return
@@ -36,9 +65,6 @@ const PokedexEntry = () => {
         fetchData();
     }, []);
 
-    // console.log("Pokemon Object: ", pokemon)
-
-    //TODO how to wait for API to finish before rendering data so no need for all these ternary functions
     return (
         <React.Fragment>
             <Grid item xs={12}>
@@ -68,7 +94,8 @@ const PokedexEntry = () => {
                 <Typography variant="body1" gutterBottom>
                     {speciesData.flavor_text_entries ? speciesData.flavor_text_entries[1].flavor_text : "no text"}
                 </Typography>
-
+                <StatsChart stats={stats}/>
+                <QuickInfo quickInfo={quickInfo}/>
             </Grid >
         </React.Fragment>
 
@@ -76,3 +103,5 @@ const PokedexEntry = () => {
 }
 
 export default PokedexEntry;
+
+
