@@ -1,0 +1,40 @@
+.info-card {
+    background-color: lavenderblush !important;
+    padding: 25px;
+    border-radius: 10px;
+
+    &.types {
+        padding: 25px 25px 17px 25px;
+        .badge {
+            margin-right: 1rem;
+            margin-bottom: 8px;
+        }
+    }
+
+    .type-row {
+        display: flex;
+        align-items: center;
+    }
+
+    .level-badge {
+        border: 1px solid lightsteelblue;
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        font-size: 10px;
+        line-height: 1;
+        width: 34px;
+        height: 32px;
+        background-color: lightsteelblue;
+        border-radius: 75px;
+        color: black;
+        font-weight: bold;
+        margin-right: 2rem;
+    }
+
+    .center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

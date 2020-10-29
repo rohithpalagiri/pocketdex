@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import StatsChart from './StatsChart';
 import QuickInfo from './QuickInfo';
+import Moves from './Moves';
+import TypeEffective from './TypeEffective'
 import { useParams } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 import axios from "axios";
-
-
-
 
 const PokedexEntry = () => {
 
@@ -20,6 +19,7 @@ const PokedexEntry = () => {
     const [stats, setStats] = useState([]);
     const [quickInfo, setQuickInfo] = useState({})
     const [speciesData, setSpeciesData] = useState([]);
+    const [moves, setMoves] = useState();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -39,6 +39,22 @@ const PokedexEntry = () => {
 
                     let stats = pokemonResponse.data.stats.map((x) => x.base_stat)
                     setStats(stats)
+
+                    let moveSet = pokemonResponse.data.moves.map((x) => {
+                        let name = x.move.name;
+
+                        let lastDataModule = x.version_group_details.pop();
+                        let learnedAt = lastDataModule.level_learned_at;
+                        let method = lastDataModule.move_learn_method.name;
+
+                        return{
+                            move: x.move.name,
+                            level: learnedAt,
+                            method: method,
+                        }
+                    })
+
+                    setMoves(moveSet);
 
                     let height = pokemonResponse.data.height;
                     let weight = pokemonResponse.data.weight;
@@ -96,6 +112,8 @@ const PokedexEntry = () => {
                 </Typography>
                 <StatsChart stats={stats}/>
                 <QuickInfo quickInfo={quickInfo}/>
+                <TypeEffective pkmTypes={types} />
+                <Moves moves={moves}/>
             </Grid >
         </React.Fragment>
 
