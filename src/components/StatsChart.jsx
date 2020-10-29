@@ -1,6 +1,7 @@
 import React from 'react';
 import ApexCharts from 'apexcharts';
 import Chart from "react-apexcharts";
+import Typography from '@material-ui/core/Typography';
 
 //TODO Need to fix loading animation of bars
 const StatsChart = ({ stats }) => {
@@ -12,8 +13,8 @@ const StatsChart = ({ stats }) => {
                 height: 300,
                 toolbar: {
                     show: false
-                  }
-                
+                }
+
             },
             plotOptions: {
                 bar: {
@@ -38,6 +39,9 @@ const StatsChart = ({ stats }) => {
                     show: false,
                 },
             },
+            grid: {
+                show: false,
+            },
             series: [{
                 data: stats
             }],
@@ -48,7 +52,9 @@ const StatsChart = ({ stats }) => {
 
 
     return (
+        <Typography>
             <Chart options={chartData.options} series={chartData.options.series} type="bar" height={300} />
+        </Typography>
     )
 }
 
