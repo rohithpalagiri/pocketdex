@@ -72,7 +72,7 @@ const TypeEffective = ({ pkmTypes }) => {
                 let effect = TYPE_CHART[key][type1] * TYPE_CHART[key][type2]
                 effectsArr.push(effect)
             })
-        } else{
+        } else {
             Object.keys(TYPE_CHART).map((key, index) => {
                 let effect = TYPE_CHART[key][type1]
                 effectsArr.push(effect)
@@ -82,55 +82,52 @@ const TypeEffective = ({ pkmTypes }) => {
     }, [pkmTypes]);
 
     return (
-        <Grid containerv className="mb-2">
-            <Paper className="info-card types" elevation={3}>
-                <Typography>
-                    <Grid item className="type-row mb-2" xs={12}>
-                        <Grid container>
-                            <Grid item xs={12} md={2}>
-                                <div className="mb-2"><b>Weak To</b></div>
-                            </Grid>
-                            <Grid item xs={12} md={10}>
-                                {typeArray.map((x, index) => {
-                                    if (x > 1) {
-                                        return <div className={`badge badge-${TYPES[index]}`}>{TYPES[index]} <span className={classes.damageValue}>{x}x</span></div>
-                                    }
-                                })}
-                            </Grid>
+        <Paper className="info-card types" elevation={3}>
+            <Typography component={'div'}>
+                <Grid item className="type-row mb-2" xs={12}>
+                    <Grid container>
+                        <Grid item xs={12} md={2}>
+                            <div className="mb-2"><b>Weak To</b></div>
+                        </Grid>
+                        <Grid item xs={12} md={10}>
+                            {typeArray.map((x, index) => {
+                                if (x > 1) {
+                                    return <div className={`badge badge-${TYPES[index]}`}>{TYPES[index]} <span className={classes.damageValue}>{x}x</span></div>
+                                }
+                            })}
                         </Grid>
                     </Grid>
-                    <Grid item className="type-row mb-2" xs={12}>
-                        <Grid container>
-                            <Grid item xs={12} md={2}>
-                                <div className="mb-2"><b>Normal Damage</b></div>
-                            </Grid>
-                            <Grid item xs={12} md={10}>
-                                {typeArray.map((x, index) => {
-                                    if (x === 1) {
-                                        return <div className={`badge badge-${TYPES[index]}`}>{TYPES[index]} <span className={classes.damageValue}>{x}x</span> </div>
-                                    }
-                                })}
-                            </Grid>
+                </Grid>
+                <Grid item className="type-row mb-2" xs={12}>
+                    <Grid container>
+                        <Grid item xs={12} md={2}>
+                            <div className="mb-2"><b>Normal Damage</b></div>
+                        </Grid>
+                        <Grid item xs={12} md={10}>
+                            {typeArray.map((x, index) => {
+                                if (x === 1) {
+                                    return <div className={`badge badge-${TYPES[index]}`}>{TYPES[index]} <span className={classes.damageValue}>{x}x</span> </div>
+                                }
+                            })}
                         </Grid>
                     </Grid>
-                    <Grid item className="type-row" xs={12}>
-                        <Grid container>
-                            <Grid item xs={12} md={2}>
-                                <div className="mb-2"><b>Resistant To</b></div>
-                            </Grid>
-                            <Grid item xs={12} md={10}>
-                                {typeArray.map((x, index) => {
-                                    if (x < 1) {
-                                        return <div className={`badge badge-${TYPES[index]}`}>{TYPES[index]} <span className={classes.damageValue}>{x}x</span></div>
-                                    }
-                                })}
-                            </Grid>
+                </Grid>
+                <Grid item className="type-row" xs={12}>
+                    <Grid container>
+                        <Grid item xs={12} md={2}>
+                            <div className="mb-2"><b>Resistant To</b></div>
+                        </Grid>
+                        <Grid item xs={12} md={10}>
+                            {typeArray.map((x, index) => {
+                                if (x < 1) {
+                                    return <div className={`badge badge-${TYPES[index]}`}>{TYPES[index]} <span className={classes.damageValue}>{x}x</span></div>
+                                }
+                            })}
                         </Grid>
                     </Grid>
-                </Typography>
-            </Paper>
-
-        </ Grid>
+                </Grid>
+            </Typography>
+        </Paper>
     )
 
 }

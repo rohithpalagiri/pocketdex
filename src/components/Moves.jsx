@@ -68,8 +68,6 @@ const Moves = ({ moves }) => {
         //         })
         //     })
         // })
-
-        console.log({ moves })
         if (moves) {
             let learnByLevel = moves.filter((x) => x.method === "level-up").sort((a, b) => a.level < b.level ? -1 : 1)
             setLevelMoves(learnByLevel)
@@ -83,9 +81,8 @@ const Moves = ({ moves }) => {
     const classes = useStyles();
 
     return (
-        <Grid container class="mb-2">
             <Paper className="info-card" elevation={3}>
-                <Typography>
+                <Typography component={'div'}>
                     <Grid container>
                         <Grid item xs={12}>
                             <Typography variant="h5" gutterBottom>
@@ -93,7 +90,6 @@ const Moves = ({ moves }) => {
                             </Typography>
                             {levelMoves && levelMoves.map((x) => {
                                 let foundMove = FullMovesDataSet.find((n) => x.move === n.name)
-                                console.log({ foundMove })
                                 return (
                                     <>
                                         <Accordion>
@@ -131,10 +127,9 @@ const Moves = ({ moves }) => {
                             </Typography>
                             {machineMoves && machineMoves.map((x) => {
                                 let foundMove = FullMovesDataSet.find((n) => x.move === n.name)
-                                console.log({ foundMove })
                                 return (
-                                    <>
-                                        <Accordion>
+                                    <div key={x.move}>
+                                        <Accordion >
                                             <AccordionSummary
                                                 expandIcon={<ExpandMoreIcon />}
                                                 classes={{
@@ -152,19 +147,18 @@ const Moves = ({ moves }) => {
                                                 </div>
                                             </AccordionSummary>
                                             <AccordionDetails>
-                                                <Typography>
+                                                <Typography variant="body1">
                                                     {foundMove.description.flavor_text}
                                                 </Typography>
                                             </AccordionDetails>
                                         </Accordion>
-                                    </>
+                                    </div>
                                 )
                             })}
                         </Grid>
                     </Grid>
                 </Typography>
             </Paper>
-        </Grid>
 
     )
 }

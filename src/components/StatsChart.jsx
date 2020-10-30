@@ -52,7 +52,7 @@ const StatsChart = ({ stats }) => {
 
 
     return (
-        <Typography>
+        <Typography component={'div'}>
             <Chart options={chartData.options} series={chartData.options.series} type="bar" height={300} />
         </Typography>
     )

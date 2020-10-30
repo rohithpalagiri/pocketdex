@@ -7,43 +7,40 @@ import Typography from '@material-ui/core/Typography';
 const QuickInfo = ({ quickInfo }) => {
 
     return (
-        <Grid container class="quickinfo-card mb-2">
-            <Paper className="info-card" elevation={3}>
-                <Typography>
-                    <Grid container>
-                        <Grid item xs={6}>
-                            <b>Height:</b> {quickInfo.height / 10} m
+        <Paper className="info-card" elevation={3}>
+            <Typography component={'div'}> 
+                <Grid container>
+                    <Grid item xs={6}>
+                        <b>Height:</b> {quickInfo.height / 10} m
                         </Grid>
-                        <Grid item xs={6}>
-                            <b>Weight:</b> {quickInfo.weight / 100} kg
+                    <Grid item xs={6}>
+                        <b>Weight:</b> {quickInfo.weight / 100} kg
                         </Grid>
+                </Grid>
+                <Grid container>
+                    <Grid item xs={6}>
+                        <b>Catch Rate:</b> {quickInfo.catchRate}
                     </Grid>
-                    <Grid container>
-                        <Grid item xs={6}>
-                            <b>Catch Rate:</b> {quickInfo.catchRate}
-                        </Grid>
-                        <Grid item xs={6}>
-                            <b>Gender:</b> Male {(quickInfo.genderRate / 8) * 100}% Female {(1 - (quickInfo.genderRate / 8)) * 100}%
+                    <Grid item xs={6}>
+                        <b>Gender:</b> Male {(quickInfo.genderRate / 8) * 100}% Female {(1 - (quickInfo.genderRate / 8)) * 100}%
                          </Grid>
+                </Grid>
+                <Grid container>
+                    <Grid item xs={6}>
+                        <b>Egg Groups:</b> {quickInfo.eggGroups && quickInfo.eggGroups.map((x, i) => <span key={i}>
+                            {i > 0 && ", "}
+                            {x}
+                        </span>)}
                     </Grid>
-                    <Grid container>
-                        <Grid item xs={6}>
-                            <b>Egg Groups:</b> {quickInfo.eggGroups && quickInfo.eggGroups.map((x, i) => <span key={i}>
-                                {i > 0 && ", "}
-                                {x}
-                            </span>)}
-                        </Grid>
-                        <Grid item xs={6}>
-                            <b>Abilities:</b> {quickInfo.abilities && quickInfo.abilities.map((x, i) => <span key={i}>
-                                {i > 0 && ", "}
-                                {x}
-                            </span>)}
-                        </Grid>
+                    <Grid item xs={6}>
+                        <b>Abilities:</b> {quickInfo.abilities && quickInfo.abilities.map((x, i) => <span key={i}>
+                            {i > 0 && ", "}
+                            {x}
+                        </span>)}
                     </Grid>
-                </Typography>
-            </Paper>
-        </Grid>
-
+                </Grid>
+            </Typography>
+        </Paper>
     )
 }
 

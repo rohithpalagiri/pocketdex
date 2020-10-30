@@ -47,7 +47,7 @@ const PokedexEntry = () => {
                         let learnedAt = lastDataModule.level_learned_at;
                         let method = lastDataModule.move_learn_method.name;
 
-                        return{
+                        return {
                             move: x.move.name,
                             level: learnedAt,
                             method: method,
@@ -71,8 +71,6 @@ const PokedexEntry = () => {
                         genderRate: genderRate,
                         abilities: abilities
                     })
-
-                    console.log({quickInfo})
                 }))
 
             return
@@ -94,26 +92,46 @@ const PokedexEntry = () => {
                 </div>
             </Grid>
             <Grid item xs={12} md={8}>
-                <Typography>
+
+                <Typography component={'div'}>
                     <div className="pokemon-header">
                         <Typography variant="h4" >
                             {pokemon.name}
                         </Typography>
                         {types.map((x) => {
-                            return <div className={`badge badge-${x}`}>{x}</div>
+                            return <div key={x} className={`badge badge-${x}`}>{x}</div>
                         })}
                     </div>
                 </Typography>
+
                 <Typography variant="h5" gutterBottom>
                     {speciesData.genera ? genus : "no genus"}
                 </Typography>
+
                 <Typography variant="body1" gutterBottom>
                     {speciesData.flavor_text_entries ? speciesData.flavor_text_entries[1].flavor_text : "no text"}
                 </Typography>
-                <StatsChart stats={stats}/>
-                <QuickInfo quickInfo={quickInfo}/>
-                <TypeEffective pkmTypes={types} />
-                <Moves moves={moves}/>
+
+                <StatsChart stats={stats} />
+
+                <Grid container>
+                    <Grid item xs={12}>
+                    <QuickInfo quickInfo={quickInfo} />
+                    </Grid>
+                </Grid>
+
+                <Grid container>
+                    <Grid item xs={12}>
+                    <TypeEffective pkmTypes={types} />
+                    </Grid>
+                </Grid>
+
+                <Grid container>
+                    <Grid item xs={12}>
+                        <Moves moves={moves} />
+                    </Grid>
+                </Grid>
+
             </Grid >
         </React.Fragment>
 
