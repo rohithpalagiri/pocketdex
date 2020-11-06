@@ -5,9 +5,16 @@ import Moves from './Moves';
 import TypeEffective from './TypeEffective'
 import { useParams } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
 import axios from "axios";
+
+const useStyles = makeStyles((theme) => ({
+    GridContainer: {
+        marginBottom: '1rem',
+    },
+}));
 
 const PokedexEntry = () => {
 
@@ -79,6 +86,8 @@ const PokedexEntry = () => {
         fetchData();
     }, []);
 
+    const classes = useStyles();
+
     return (
         <React.Fragment>
             <Grid item xs={12}>
@@ -86,43 +95,48 @@ const PokedexEntry = () => {
                     #{pokemon.id}
                 </Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
-                <div className="pokedex-image">
-                    {pokemon.sprites ? <img src={pokemon.sprites.other["official-artwork"].front_default} /> : "Loading..."}
-                </div>
-            </Grid>
-            <Grid item xs={12} md={8}>
 
-                <Typography component={'div'}>
-                    <div className="pokemon-header">
-                        <Typography variant="h4" >
-                            {pokemon.name}
-                        </Typography>
-                        {types.map((x) => {
-                            return <div key={x} className={`badge badge-${x}`}>{x}</div>
-                        })}
-                    </div>
-                </Typography>
-
-                <Typography variant="h5" gutterBottom>
-                    {speciesData.genera ? genus : "no genus"}
-                </Typography>
-
-                <Typography variant="body1" gutterBottom>
-                    {speciesData.flavor_text_entries ? speciesData.flavor_text_entries[1].flavor_text : "no text"}
-                </Typography>
-
-                <StatsChart stats={stats} />
-
+            <Grid item xs={12}>
                 <Grid container>
-                    <Grid item xs={12}>
-                    <QuickInfo quickInfo={quickInfo} />
+                    <Grid item xs={12} md={4}>
+                        <div className="pokedex-image">
+                            {pokemon.sprites ? <img src={pokemon.sprites.other["official-artwork"].front_default} /> : "Loading..."}
+                        </div>
+                    </Grid>
+
+                    <Grid item xs={12} md={8}>
+                        <Typography component={'div'}>
+                            <div className="pokemon-header">
+                                <Typography variant="h4" >
+                                    {pokemon.name}
+                                </Typography>
+                                {types.map((x) => {
+                                    return <div key={x} className={`badge badge-${x}`}>{x}</div>
+                                })}
+                            </div>
+                        </Typography>
+
+                        <Typography variant="h5" gutterBottom>
+                            {speciesData.genera ? genus : "no genus"}
+                        </Typography>
+
+                        <Typography variant="body1" gutterBottom>
+                            {speciesData.flavor_text_entries ? speciesData.flavor_text_entries[1].flavor_text : "no text"}
+                        </Typography>
                     </Grid>
                 </Grid>
+            </Grid>
 
-                <Grid container>
-                    <Grid item xs={12}>
-                    <TypeEffective pkmTypes={types} />
+            <Grid item xs={12} md={12}>
+                <StatsChart stats={stats} />
+
+                <Grid container spacing={3} className={classes.GridContainer}>
+                    <Grid item xs={12} md={6}>
+                        <QuickInfo quickInfo={quickInfo} />
+                    </Grid>
+
+                    <Grid item xs={12} md={6}>
+                        <TypeEffective pkmTypes={types} />
                     </Grid>
                 </Grid>
 

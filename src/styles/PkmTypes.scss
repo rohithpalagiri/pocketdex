@@ -1,5 +1,5 @@
 .info-card {
-    background-color: lavenderblush !important;
+    background-color: aliceblue !important;
     padding: 25px;
     border-radius: 10px;
 
@@ -36,5 +36,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .align-center{
+        align-items: center;
+        display: flex;
     }
 }

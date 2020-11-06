@@ -10,13 +10,19 @@ import PokedexEntry from './components/PokedexEntry'
 import MenuBar from './components/MenuBar'
 import FullPokemonList from './fullpokemonList.json'
 import axios from "axios";
-
-const useStyles = makeStyles({
+    
+const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: '1440px',
     margin: '0 auto',
+    paddingLeft: '15px',
+      paddingRight: '15px',
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: '15px',
+      paddingRight: '15px',
   },
-});
+  },
+}));
 
 function App() {
   const [pokemonList, setPokemonList] = useState([]);
