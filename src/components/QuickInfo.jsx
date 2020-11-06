@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     paperRoot: {
         height: '100%',
         padding: '25px',
+        backgroundColor: 'aliceBlue',
     },
     typographyRoot: {
         height: '100%',

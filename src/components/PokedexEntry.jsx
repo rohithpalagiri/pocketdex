@@ -14,6 +14,18 @@ const useStyles = makeStyles((theme) => ({
     GridContainer: {
         marginBottom: '1rem',
     },
+    PkmEntry: {
+        display: 'flex',
+        alignItems: 'center',
+        [theme.breakpoints.up('md')]: {
+            marginLeft: '3rem',
+        },
+    },
+    PkmSpecies: {
+        [theme.breakpoints.down('sm')]: {
+            textAlign: 'center',
+        },
+    }
 }));
 
 const PokedexEntry = () => {
@@ -98,31 +110,34 @@ const PokedexEntry = () => {
 
             <Grid item xs={12}>
                 <Grid container>
-                    <Grid item xs={12} md={4}>
+                    <Grid item xs={12} md={2}>
                         <div className="pokedex-image">
                             {pokemon.sprites ? <img src={pokemon.sprites.other["official-artwork"].front_default} /> : "Loading..."}
                         </div>
                     </Grid>
 
-                    <Grid item xs={12} md={8}>
-                        <Typography component={'div'}>
-                            <div className="pokemon-header">
-                                <Typography variant="h4" >
-                                    {pokemon.name}
-                                </Typography>
-                                {types.map((x) => {
-                                    return <div key={x} className={`badge badge-${x}`}>{x}</div>
-                                })}
-                            </div>
-                        </Typography>
+                    <Grid item xs={12} md={9} className={classes.PkmEntry}>
+                        <div>
+                            <Typography component={'div'}>
+                                <div className="pokemon-header">
+                                    <Typography variant="h4" >
+                                        {pokemon.name}
+                                    </Typography>
+                                    {types.map((x) => {
+                                        return <div key={x} className={`badge badge-${x}`}>{x}</div>
+                                    })}
+                                </div>
+                            </Typography>
 
-                        <Typography variant="h5" gutterBottom>
-                            {speciesData.genera ? genus : "no genus"}
-                        </Typography>
+                            <Typography variant="h5" className={classes.PkmSpecies} gutterBottom>
+                                {speciesData.genera ? genus : "no genus"}
+                            </Typography>
 
-                        <Typography variant="body1" gutterBottom>
-                            {speciesData.flavor_text_entries ? speciesData.flavor_text_entries[1].flavor_text : "no text"}
-                        </Typography>
+                            <Typography variant="body1" gutterBottom>
+                                {speciesData.flavor_text_entries ? speciesData.flavor_text_entries[1].flavor_text : "no text"}
+                            </Typography>
+                        </div>
+
                     </Grid>
                 </Grid>
             </Grid>

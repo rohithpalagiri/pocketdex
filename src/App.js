@@ -16,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '1440px',
     margin: '0 auto',
     paddingLeft: '15px',
-      paddingRight: '15px',
+    paddingRight: '15px',
+    paddingTop: '1rem',
     [theme.breakpoints.down('sm')]: {
       paddingLeft: '15px',
       paddingRight: '15px',
