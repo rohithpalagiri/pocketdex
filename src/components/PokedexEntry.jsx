@@ -5,6 +5,7 @@ import Moves from './Moves';
 import TypeEffective from './TypeEffective'
 import { useParams } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
+import Loader from './Loader'
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
@@ -32,6 +33,7 @@ const PokedexEntry = () => {
 
     const pokemonKey = useParams().id
 
+    const [isLoaded, setIsLoaded] = useState(false)
     const [pokemon, setPokemon] = useState([]);
     const [genus, setGenus] = useState("");
     const [types, setTypes] = useState([]);
@@ -90,6 +92,7 @@ const PokedexEntry = () => {
                         genderRate: genderRate,
                         abilities: abilities
                     })
+                    setIsLoaded(true)
                 }))
 
             return
@@ -100,19 +103,27 @@ const PokedexEntry = () => {
 
     const classes = useStyles();
 
+    //Removes special character issues seen on Chromium based browsers
+    function cleanStr(str){
+        return str.replace(/(?:\r\f|\r|\f)/g, ' ');
+    }
+
     return (
         <React.Fragment>
-            <Grid item xs={12}>
-                <Typography variant="h3">
+
+            {!isLoaded && <div><Loader /></div>}
+
+            {isLoaded && <><Grid item xs={12}>
+                <Typography variant="h3" gutterBottom>
                     #{pokemon.id}
                 </Typography>
             </Grid>
-
+            
             <Grid item xs={12}>
                 <Grid container>
                     <Grid item xs={12} md={2}>
                         <div className="pokedex-image">
-                            {pokemon.sprites ? <img src={pokemon.sprites.other["official-artwork"].front_default} /> : "Loading..."}
+                            <img src={pokemon.sprites.other["official-artwork"].front_default} />
                         </div>
                     </Grid>
 
@@ -130,11 +141,11 @@ const PokedexEntry = () => {
                             </Typography>
 
                             <Typography variant="h5" className={classes.PkmSpecies} gutterBottom>
-                                {speciesData.genera ? genus : "no genus"}
+                                {genus}
                             </Typography>
 
                             <Typography variant="body1" gutterBottom>
-                                {speciesData.flavor_text_entries ? speciesData.flavor_text_entries[1].flavor_text : "no text"}
+                                {cleanStr(speciesData.flavor_text_entries[1].flavor_text)}
                             </Typography>
                         </div>
 
@@ -160,9 +171,9 @@ const PokedexEntry = () => {
                         <Moves moves={moves} />
                     </Grid>
                 </Grid>
+            </Grid ></>}
 
-            </Grid >
-        </React.Fragment>
+        </React.Fragment >
 
     )
 }
