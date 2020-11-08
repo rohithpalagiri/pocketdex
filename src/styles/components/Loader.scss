@@ -1,6 +1,5 @@
 .loader-container{
     height: 100%;
-    position: absolute;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -8,8 +7,18 @@
     left: 0;
     top: 0;
 
-    .loader-img{
-        max-width: 200px;
-        max-height: 143px;
+    &.page{
+        position: absolute;
+        .loader-img{
+            max-width: 200px;
+            max-height: 143px;
+        }
+    }
+
+    &.infinite-scroll{
+        .loader-img{
+            max-width: 150px;
+            max-height: 143px;
+        }
     }
 }

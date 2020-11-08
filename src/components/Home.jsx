@@ -1,6 +1,7 @@
 import React from 'react';
 import PokemonTile from './PokemonTile';
 import Grid from '@material-ui/core/Grid';
+import Loader from './Loaders/Loader'
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 
@@ -13,7 +14,6 @@ const Home = ({ pokemonList, fetchMorePokemon, filterPokemon }) => {
     }
 
     return (
-
         <>
             <Grid item xs={12}>
                 <ul>
@@ -22,7 +22,7 @@ const Home = ({ pokemonList, fetchMorePokemon, filterPokemon }) => {
                         next={fetchMorePokemon}
                         hasMore={true}
                         style={style}
-                        loader={<h4>Loading...</h4>}
+                        loader={<Loader variant={'infinite-scroll'}/>}
                         endMessage={
                             <p style={{ textAlign: 'center' }}>
                                 <b>Yay! You have seen it all</b>
@@ -35,7 +35,6 @@ const Home = ({ pokemonList, fetchMorePokemon, filterPokemon }) => {
                     </InfiniteScroll>
                 </ul>
             </Grid>
-
         </>
     );
 }

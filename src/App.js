@@ -51,8 +51,6 @@ function App() {
     let response = await axios.get(url);
     if (response.data.results) {
       let newPokemon = response.data.results;
-      //Tried to use spread syntax but it did not work?
-      //setPokemonList([...pokemonList, newPokemon])
       setPokemonList(pokemonList.concat(newPokemon))
     }
 

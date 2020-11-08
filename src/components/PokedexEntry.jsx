@@ -5,7 +5,7 @@ import Moves from './Moves';
 import TypeEffective from './TypeEffective'
 import { useParams } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
-import Loader from './Loader'
+import Loader from './Loaders/Loader'
 import Pokeball from '../images/pokeball.svg';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -116,7 +116,7 @@ const PokedexEntry = () => {
     return (
         <React.Fragment>
 
-            {!isLoaded && <div><Loader /></div>}
+            {!isLoaded && <div><Loader variant={'page'}/></div>}
 
             {isLoaded &&
                 <div className="pocketdex-container">

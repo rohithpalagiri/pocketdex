@@ -1,5 +1,5 @@
 import React from 'react';
-import PikachuLoader from '../images/pikachu-running.gif';
+import PikachuLoader from '../../images/pikachu-running.gif';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,13 +14,12 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Loader = () => {
+const Loader = ({variant}) => {
 
     const classes = useStyles();
 
     return (
-
-        <div className="loader-container">
+        <div className={`loader-container ${variant}`}>
             <Grid container>
                 <Grid item className={classes.itemRoot} xs={12}>
                     <img className="loader-img" src={PikachuLoader} alt="pikachu-loader" />
@@ -31,8 +30,6 @@ const Loader = () => {
                     </Typography>
                 </Grid>
             </Grid>
-
-
         </div>
     );
 }
