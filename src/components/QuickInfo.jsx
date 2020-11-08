@@ -27,10 +27,13 @@ function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-//TODO Need to fix loading animation of bars
 const QuickInfo = ({ quickInfo }) => {
 
     const classes = useStyles();
+
+    let genderRatio = (rate) => {
+        return (<><img class="info-icon" src={Male} /> {(rate / 8) * 100}% <img class="info-icon ml-1" src={Female} />  {(1 - (rate / 8)) * 100}%</>)
+    }
 
     return (
         <Paper className="info-card" className={classes.paperRoot} elevation={3}>
@@ -48,7 +51,7 @@ const QuickInfo = ({ quickInfo }) => {
                         <b>Catch Rate:</b> {quickInfo.catchRate}
                     </Grid>
                     <Grid item xs={12} md={6} className={classes.GridContainer}>
-                        <b>Gender:</b> <img class="info-icon" src={Male} /> {(quickInfo.genderRate / 8) * 100}% <img class="info-icon ml-1" src={Female} />  {(1 - (quickInfo.genderRate / 8)) * 100}%
+                        <b>Gender:</b> {quickInfo.genderRate === -1 ? 'N/A' : genderRatio(quickInfo.genderRate)}
                          </Grid>
                 </Grid>
                 <Grid container>
