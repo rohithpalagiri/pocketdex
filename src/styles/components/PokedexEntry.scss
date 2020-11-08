@@ -1,0 +1,63 @@
+@import '../utilities/colors.scss';
+
+.pokedex-image{
+    max-width: 250px;
+    min-width: 217.5px;
+    min-height: 217.5px;
+    border-radius: 50%;
+    padding: 35px;
+    background-color: #e0effd;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+    img{
+        width: 100%;
+    }
+    @media (max-width: 959px) {
+        margin: 0 auto;
+        margin-bottom: 2rem;
+    }
+}
+
+
+@each $key,$val in $colors-list{
+    &.badge-#{$key} {
+        background-color: $val;
+    }
+}
+
+.pokemon-header-container{
+    width: 100%;
+
+    .pokemon-header{
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+        margin-bottom: 8px;
+    
+        .badge{
+            margin-left: 1rem;
+        }
+    
+        @media (max-width: 959px) {
+            justify-content: center;
+        }
+    }
+}
+
+.badge{
+    display: inline-block;
+    border-radius: 7px;
+    font-size: 1rem;
+    padding: 4px 8px;
+    text-transform: capitalize;
+    color: white;
+}
+
+.class-icon{
+    width: 24px;
+    margin-right: 0.5rem;
+}
+
+.info-icon{
+    height: 18px;
+    margin-right: 3px;
+}

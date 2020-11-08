@@ -13,6 +13,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import { Link} from "react-router-dom"
 import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     menuButton: {
         marginRight: theme.spacing(2),
+        paddingLeft: '0px',
         [theme.breakpoints.down('sm')]: {
             marginLeft: '0px',
         },
@@ -85,10 +87,14 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: '1420px',
         margin: '0 auto',
         width: '100%',
-        padding: '0',
+        padding: '0 15px',
     },
     appBarRoot: {
         backgroundColor: '#ff4b4b'
+    },
+    linkStyle:{
+        textDecoration: 'none',
+        color: 'white',
     }
 }));
 
@@ -188,7 +194,7 @@ const MenuBar = ({ filterPokemon }) => {
                             <MenuIcon />
                         </IconButton>
                         <Typography className={classes.title} variant="h6" noWrap>
-                            Pocketdex
+                                <Link className={classes.linkStyle} to={'/'}>Pocketdex</Link>
                         </Typography>
                     </Box>
 

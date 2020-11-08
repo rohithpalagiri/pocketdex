@@ -23,6 +23,10 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 //TODO Need to fix loading animation of bars
 const QuickInfo = ({ quickInfo }) => {
 
@@ -51,13 +55,13 @@ const QuickInfo = ({ quickInfo }) => {
                     <Grid item xs={12} md={6} className={classes.GridContainer}>
                         <b>Egg Groups:</b> {quickInfo.eggGroups && quickInfo.eggGroups.map((x, i) => <span key={i}>
                             {i > 0 && ", "}
-                            {x}
+                            {capitalize(x)}
                         </span>)}
                     </Grid>
                     <Grid item xs={12} md={6} className={classes.GridContainer}>
                         <b>Abilities:</b> {quickInfo.abilities && quickInfo.abilities.map((x, i) => <span key={i}>
                             {i > 0 && ", "}
-                            {x}
+                            {capitalize(x)}
                         </span>)}
                     </Grid>
                 </Grid>

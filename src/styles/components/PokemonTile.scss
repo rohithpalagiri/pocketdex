@@ -1,35 +1,4 @@
-p{
-    font-size: 18px;
-}
-
-
-.pocketdex-wrapper{
-    ul{
-        display: flex;
-        flex-wrap: wrap;
-    }
-}
-
-$colors-list:(
-    normal: #A8A878,
-    fire: #F08030,
-    fighting: #C03028,
-    water: #6890F0,
-    grass: #78C850,
-    poison: #A040A0,
-    electric: #F8D030,
-    ground: #E0C068,
-    rock: #B8A038,
-    bug: #A8B820,
-    dragon: #7038F8,
-    ghost: #705898,
-    dark: #705848,
-    fairy: #EE99AC,
-    steel: #B8B8D0,
-    psychic: #F85888,
-    ice: #98D8D8,
-    flying: #A890F0,
-);
+@import '../utilities/colors.scss';
 
 .pokemonTile{
     position: relative;
@@ -42,6 +11,11 @@ $colors-list:(
     text-align: center;
     border-radius: 10px;
     overflow: hidden;
+
+    @media (max-width: 959px) {
+        width: 150px;
+        height: 150px;
+    }
 
     @each $key,$val in $colors-list{
         &.primary-#{$key} {
@@ -114,10 +88,4 @@ $colors-list:(
             }
         }
     }
-}
-
-//TODO Need to find better location for this
-body{
-    background: linear-gradient(to right, #c9ffbf, #ffafbd);
-    padding-bottom: 3rem;
 }

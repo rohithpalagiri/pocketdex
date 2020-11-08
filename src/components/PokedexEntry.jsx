@@ -6,6 +6,7 @@ import TypeEffective from './TypeEffective'
 import { useParams } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import Loader from './Loader'
+import Pokeball from '../images/pokeball.svg';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
@@ -92,7 +93,9 @@ const PokedexEntry = () => {
                         genderRate: genderRate,
                         abilities: abilities
                     })
+
                     setIsLoaded(true)
+
                 }))
 
             return
@@ -104,7 +107,7 @@ const PokedexEntry = () => {
     const classes = useStyles();
 
     //Removes special character issues seen on Chromium based browsers
-    function cleanStr(str){
+    function cleanStr(str) {
         return str.replace(/(?:\r\f|\r|\f)/g, ' ');
     }
 
@@ -113,65 +116,67 @@ const PokedexEntry = () => {
 
             {!isLoaded && <div><Loader /></div>}
 
-            {isLoaded && <><Grid item xs={12}>
-                <Typography variant="h3" gutterBottom>
-                    #{pokemon.id}
-                </Typography>
-            </Grid>
-            
-            <Grid item xs={12}>
-                <Grid container>
-                    <Grid item xs={12} md={2}>
-                        <div className="pokedex-image">
-                            <img src={pokemon.sprites.other["official-artwork"].front_default} />
-                        </div>
-                    </Grid>
-
-                    <Grid item xs={12} md={9} className={classes.PkmEntry}>
-                        <div>
-                            <Typography component={'div'}>
-                                <div className="pokemon-header">
-                                    <Typography variant="h4" >
-                                        {pokemon.name}
-                                    </Typography>
-                                    {types.map((x) => {
-                                        return <div key={x} className={`badge badge-${x}`}>{x}</div>
-                                    })}
-                                </div>
-                            </Typography>
-
-                            <Typography variant="h5" className={classes.PkmSpecies} gutterBottom>
-                                {genus}
-                            </Typography>
-
-                            <Typography variant="body1" gutterBottom>
-                                {cleanStr(speciesData.flavor_text_entries[1].flavor_text)}
-                            </Typography>
-                        </div>
-
-                    </Grid>
+            {isLoaded &&
+             <div className="pocketdex-container">
+                <Grid item xs={12}>
+                    <Typography variant="h3" gutterBottom>
+                        #{pokemon.id}
+                    </Typography>
                 </Grid>
-            </Grid>
 
-            <Grid item xs={12} md={12}>
-                <StatsChart stats={stats} />
+                <Grid item xs={12}>
+                    <Grid container>
+                        <Grid item xs={12} md={2}>
+                            <div className="pokedex-image">
+                                <img src={pokemon.sprites.other["official-artwork"].front_default? pokemon.sprites.other["official-artwork"].front_default :Pokeball} />
+                            </div>
+                        </Grid>
 
-                <Grid container spacing={3} className={classes.GridContainer}>
-                    <Grid item xs={12} md={6}>
-                        <QuickInfo quickInfo={quickInfo} />
-                    </Grid>
+                        <Grid item xs={12} md={9} className={classes.PkmEntry}>
+                            <div className="pokemon-header-container">
+                                <Typography component={'div'}>
+                                    <div className="pokemon-header">
+                                        <Typography variant="h4" >
+                                            {pokemon.name}
+                                        </Typography>
+                                        {types.map((x) => {
+                                            return <div key={x} className={`badge badge-${x}`}>{x}</div>
+                                        })}
+                                    </div>
+                                </Typography>
 
-                    <Grid item xs={12} md={6}>
-                        <TypeEffective pkmTypes={types} />
+                                <Typography variant="h5" className={classes.PkmSpecies} gutterBottom>
+                                    {genus}
+                                </Typography>
+
+                                <Typography variant="body1" gutterBottom>
+                                    {cleanStr(speciesData.flavor_text_entries[1].flavor_text)}
+                                </Typography>
+                            </div>
+                        </Grid>
                     </Grid>
                 </Grid>
 
-                <Grid container>
-                    <Grid item xs={12}>
-                        <Moves moves={moves} />
+                <Grid item xs={12} md={12}>
+                    <StatsChart stats={stats} />
+
+                    <Grid container spacing={3} className={classes.GridContainer}>
+                        <Grid item xs={12} md={6}>
+                            <QuickInfo quickInfo={quickInfo} />
+                        </Grid>
+
+                        <Grid item xs={12} md={6}>
+                            <TypeEffective pkmTypes={types} />
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Grid ></>}
+
+                    <Grid container>
+                        <Grid item xs={12}>
+                            <Moves moves={moves} />
+                        </Grid>
+                    </Grid>
+                </Grid >
+            </div>}
 
         </React.Fragment >
 

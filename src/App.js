@@ -10,7 +10,7 @@ import PokedexEntry from './components/PokedexEntry'
 import MenuBar from './components/MenuBar'
 import FullPokemonList from './fullpokemonList.json'
 import axios from "axios";
-    
+
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: '1440px',
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       paddingLeft: '15px',
       paddingRight: '15px',
-  },
+    },
   },
 }));
 
@@ -74,9 +74,9 @@ function App() {
 
   return (
     <>
-      <MenuBar filterPokemon={filterPokemon} />
-      <Grid container className={classes.root}>
-        <Router>
+      <Router>
+        <MenuBar filterPokemon={filterPokemon} />
+        <Grid container className={classes.root}>
           <Switch>
             <Route path="/pokedex/:id">
               <PokedexEntry pokemonList={pokemonList} />
@@ -86,8 +86,9 @@ function App() {
             </Route>
           </Switch>
 
-        </Router>
-      </Grid>
+
+        </Grid>
+      </Router>
     </>
   );
 }
