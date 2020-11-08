@@ -38,9 +38,9 @@ const PokedexEntry = () => {
     const [pokemon, setPokemon] = useState([]);
     const [genus, setGenus] = useState("");
     const [types, setTypes] = useState([]);
+    const [description, setDescription] = useState();
     const [stats, setStats] = useState([]);
     const [quickInfo, setQuickInfo] = useState({})
-    const [speciesData, setSpeciesData] = useState([]);
     const [moves, setMoves] = useState();
 
     useEffect(() => {
@@ -51,10 +51,12 @@ const PokedexEntry = () => {
             ])
                 .then(axios.spread((pokemonResponse, speciesReponse) => {
                     setPokemon(pokemonResponse.data)
-                    setSpeciesData(speciesReponse.data)
 
                     let genera = speciesReponse.data.genera.filter((x) => x.language.name === "en")
                     setGenus(genera[0].genus)
+
+                    let langDescription = speciesReponse.data.flavor_text_entries.filter((x) => x.language.name === "en")
+                    setDescription(langDescription[0].flavor_text)
 
                     let types = pokemonResponse.data.types.map((x) => x.type.name)
                     setTypes(types)
@@ -150,7 +152,7 @@ const PokedexEntry = () => {
                                     </Typography>
 
                                     <Typography variant="body1" gutterBottom>
-                                        {cleanStr(speciesData.flavor_text_entries[1].flavor_text)}
+                                        {cleanStr(description)}
                                     </Typography>
                                 </div>
                             </Grid>
