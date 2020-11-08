@@ -1,0 +1,18 @@
+//Manual Overrides
+
+.MuiToolbar-root{
+    max-width: 1270px;
+
+    @media (max-width: 1289px){
+        max-width: 1090px;
+    }
+    @media (max-width: 1109px){
+        max-width: 910px;
+    }
+    @media (max-width: 879px){
+        max-width: 690px;
+    }
+    @media (max-width: 709px){
+        max-width: 520px;
+    }
+}

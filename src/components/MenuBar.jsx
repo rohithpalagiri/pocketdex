@@ -23,9 +23,7 @@ const useStyles = makeStyles((theme) => ({
     menuButton: {
         marginRight: theme.spacing(2),
         paddingLeft: '0px',
-        [theme.breakpoints.down('sm')]: {
-            marginLeft: '0px',
-        },
+        marginLeft: '-3px',
     },
     title: {
         display: 'none',
@@ -62,7 +60,6 @@ const useStyles = makeStyles((theme) => ({
     },
     inputInput: {
         padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
         transition: theme.transitions.create('width'),
         width: '100%',
@@ -84,10 +81,12 @@ const useStyles = makeStyles((theme) => ({
     },
     toolbarRoot: {
         justifyContent: 'space-between',
-        maxWidth: '1420px',
         margin: '0 auto',
         width: '100%',
-        padding: '0 15px',
+        padding: '0px 15px',
+        [theme.breakpoints.down('1300px')]: {
+            display: 'none'
+        },
     },
     appBarRoot: {
         backgroundColor: '#ff4b4b'
