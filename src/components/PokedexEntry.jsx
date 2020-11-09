@@ -3,6 +3,7 @@ import StatsChart from './StatsChart';
 import QuickInfo from './QuickInfo';
 import Moves from './Moves';
 import TypeEffective from './TypeEffective'
+import userService from '../services/pokemon'
 import { useParams } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import Loader from './Loaders/Loader'
@@ -44,66 +45,62 @@ const PokedexEntry = () => {
     const [moves, setMoves] = useState();
 
     useEffect(() => {
-        const fetchData = async () => {
-            axios.all([
-                axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonKey}`),
-                axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemonKey}`)
-            ])
-                .then(axios.spread((pokemonResponse, speciesReponse) => {
-                    setPokemon(pokemonResponse.data)
 
-                    let genera = speciesReponse.data.genera.filter((x) => x.language.name === "en")
-                    setGenus(genera[0].genus)
+        (async () => {
+            await userService.getPkm(pokemonKey).then((response) => {
+                console.log("wegwegetgwteg", response)
+                setPokemon(response.pkm)
 
-                    let langDescription = speciesReponse.data.flavor_text_entries.filter((x) => x.language.name === "en")
-                    setDescription(langDescription[0].flavor_text)
+                let pkm = response.pkm
+                let species = response.species
 
-                    let types = pokemonResponse.data.types.map((x) => x.type.name)
-                    setTypes(types)
+                let genera = species.genera.filter((x) => x.language.name === "en")
+                setGenus(genera[0].genus)
 
-                    let stats = pokemonResponse.data.stats.map((x) => x.base_stat)
-                    setStats(stats)
+                let langDescription = species.flavor_text_entries.filter((x) => x.language.name === "en")
+                setDescription(langDescription[0].flavor_text)
 
-                    let moveSet = pokemonResponse.data.moves.map((x) => {
-                        let name = x.move.name;
+                let types = pkm.types.map((x) => x.type.name)
+                setTypes(types)
 
-                        let lastDataModule = x.version_group_details.pop();
-                        let learnedAt = lastDataModule.level_learned_at;
-                        let method = lastDataModule.move_learn_method.name;
+                let stats = pkm.stats.map((x) => x.base_stat)
+                setStats(stats)
 
-                        return {
-                            move: x.move.name,
-                            level: learnedAt,
-                            method: method,
-                        }
-                    })
+                let moveSet = pkm.moves.map((x) => {
+                    let name = x.move.name;
 
-                    setMoves(moveSet);
+                    let lastDataModule = x.version_group_details.pop();
+                    let learnedAt = lastDataModule.level_learned_at;
+                    let method = lastDataModule.move_learn_method.name;
 
-                    let height = pokemonResponse.data.height;
-                    let weight = pokemonResponse.data.weight;
-                    let catchRate = speciesReponse.data.capture_rate;
-                    let eggGroups = speciesReponse.data.egg_groups.map((x) => x.name)
-                    let genderRate = speciesReponse.data.gender_rate;
-                    let abilities = pokemonResponse.data.abilities.map((x) => x.ability.name)
+                    return {
+                        move: x.move.name,
+                        level: learnedAt,
+                        method: method,
+                    }
+                })
 
-                    setQuickInfo({
-                        height: height,
-                        weight: weight,
-                        catchRate: catchRate,
-                        eggGroups: eggGroups,
-                        genderRate: genderRate,
-                        abilities: abilities
-                    })
+                setMoves(moveSet);
 
-                    setIsLoaded(true)
+                let height = pkm.height;
+                let weight = pkm.weight;
+                let catchRate = species.capture_rate;
+                let eggGroups = species.egg_groups.map((x) => x.name)
+                let genderRate = species.gender_rate;
+                let abilities = pkm.abilities.map((x) => x.ability.name)
 
-                }))
+                setQuickInfo({
+                    height: height,
+                    weight: weight,
+                    catchRate: catchRate,
+                    eggGroups: eggGroups,
+                    genderRate: genderRate,
+                    abilities: abilities
+                })
 
-            return
-        };
-
-        fetchData();
+                setIsLoaded(true)
+            })
+          })();
     }, []);
 
     const classes = useStyles();
