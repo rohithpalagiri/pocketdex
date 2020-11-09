@@ -2,7 +2,7 @@ import axios from 'axios'
 const baseUrl = '/'
 
 const getAll = () => {
-    const request = axios.get(baseUrl)
+    const request = axios.get(`${baseUrl}api/pokedex`)
     return request.then(response => response.data)
 }
 
