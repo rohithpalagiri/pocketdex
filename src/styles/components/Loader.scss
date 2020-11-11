@@ -10,14 +10,12 @@
     &.page{
         position: absolute;
         .loader-img{
-            max-width: 200px;
             max-height: 143px;
         }
     }
 
     &.infinite-scroll{
         .loader-img{
-            max-width: 150px;
             max-height: 143px;
         }
     }
