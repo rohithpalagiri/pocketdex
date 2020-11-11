@@ -7,7 +7,7 @@ const getAll = () => {
 }
 
 const getPkm = (id) => {
-    const request = axios.get(`${baseUrl}pokedex/${id}`)
+    const request = axios.get(`${baseUrl}api/pokedex/${id}`)
     return request.then(response => response.data)
 }
 

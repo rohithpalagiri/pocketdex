@@ -58,6 +58,7 @@ function App() {
 
   const filterPokemon = (e) => {
     let value = e.target.value;
+    console.log("This is the value: ", value)
     if (value) {
       let filterPokemon = FullPokemonList.filter((x) => x.name.includes(value))
       setPokemonList(filterPokemon)
