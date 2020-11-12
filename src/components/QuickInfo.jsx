@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
         height: '100%',
         padding: '25px',
         backgroundColor: 'aliceBlue',
+        width: '100%',
     },
     typographyRoot: {
         height: '100%',

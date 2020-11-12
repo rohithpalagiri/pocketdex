@@ -1,45 +1,75 @@
 @import '../utilities/colors.scss';
 
-.pokedex-image{
-    max-width: 250px;
-    min-width: 217.5px;
-    min-height: 217.5px;
-    border-radius: 50%;
-    padding: 35px;
-    background-color: #e0effd;
-    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.15);
-    img{
-        width: 100%;
-    }
+.pocketdex-container{
+    width: 100%;
+}
+
+.header-container{
+    display: flex;
+    align-items: center;
+
     @media (max-width: 959px) {
-        margin: 0 auto;
-        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+    .pokedex-image{
+        display: inline-block;
+        width: 235px;
+        min-width: 235px;
+        min-height: 217.5px;
+        border-radius: 50%;
+        padding: 35px;
+        background-color: #e0effd;
+        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+        img{
+            width: 165px;
+            height: 165px;
+        }
+    
+        .img-placeholder{
+            width: 165px;
+            height: 165px;
+        }
+        @media (max-width: 959px) {
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+        }
+    }
+    .pokemon-entry{
+        display: inline-block;
+        margin-left: 2rem;
+
+        @media (max-width: 959px) {
+            display: block;
+            width: 100%;
+        }
+    
+        .pokemon-header{
+            display: flex;
+            align-items: center;
+            text-transform: capitalize;
+            margin-bottom: 8px;
+
+            h4{
+                display: inline-block;
+            }
+        
+            .badge{
+                margin-left: 1rem;
+            }
+        
+            @media (max-width: 959px) {
+                justify-content: center;
+            }
+        }
     }
 }
+
 
 
 @each $key,$val in $colors-list{
     &.badge-#{$key} {
         background-color: $val;
-    }
-}
-
-.pokemon-header-container{
-    width: 100%;
-
-    .pokemon-header{
-        display: flex;
-        align-items: center;
-        text-transform: capitalize;
-        margin-bottom: 8px;
-    
-        .badge{
-            margin-left: 1rem;
-        }
-    
-        @media (max-width: 959px) {
-            justify-content: center;
-        }
     }
 }
 

@@ -7,11 +7,8 @@ import userService from '../services/pokemon'
 import { useParams } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import Loader from './Loaders/Loader'
-import Pokeball from '../images/pokeball.svg';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-
-import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
     GridContainer: {
@@ -48,7 +45,6 @@ const PokedexEntry = () => {
 
         (async () => {
             await userService.getPkm(pokemonKey).then((response) => {
-                console.log("wegwegetgwteg", response)
                 setPokemon(response.pkm)
 
                 let pkm = response.pkm
@@ -100,7 +96,7 @@ const PokedexEntry = () => {
 
                 setIsLoaded(true)
             })
-          })();
+        })();
     }, []);
 
     const classes = useStyles();
@@ -113,7 +109,7 @@ const PokedexEntry = () => {
     return (
         <React.Fragment>
 
-            {!isLoaded && <div><Loader variant={'page'}/></div>}
+            {!isLoaded && <div><Loader variant={'page'} /></div>}
 
             {isLoaded &&
                 <div className="pocketdex-container">
@@ -124,36 +120,36 @@ const PokedexEntry = () => {
                     </Grid>
 
                     <Grid item xs={12}>
-                        <Grid container>
-                            <Grid item xs={12} md={2}>
-                                <div className="pokedex-image">
-                                    <img src={pokemon.sprites.other["official-artwork"].front_default ? pokemon.sprites.other["official-artwork"].front_default : Pokeball} />
-                                </div>
-                            </Grid>
+                        <div className="header-container">
+                            <div className="pokedex-image">
+                                {pokemon.sprites.other["official-artwork"].front_default ?
+                                    <img src={pokemon.sprites.other["official-artwork"].front_default} /> :
+                                    <div class="img-placeholder"></div>
+                                }
+                            </div>
 
-                            <Grid item xs={12} md={9} className={classes.PkmEntry}>
-                                <div className="pokemon-header-container">
-                                    <Typography component={'div'}>
-                                        <div className="pokemon-header">
-                                            <Typography variant="h4" >
-                                                {pokemon.name}
-                                            </Typography>
-                                            {types.map((x) => {
-                                                return <div key={x} className={`badge badge-${x}`}>{x}</div>
-                                            })}
-                                        </div>
-                                    </Typography>
+                            <div className="pokemon-entry">
+                                <Typography component={'div'}>
+                                    <div className="pokemon-header">
+                                        <Typography variant="h4" >
+                                            {pokemon.name}
+                                        </Typography>
+                                        {types.map((x) => {
+                                            return <div key={x} className={`badge badge-${x}`}>{x}</div>
+                                        })}
+                                    </div>
+                                </Typography>
 
-                                    <Typography variant="h5" className={classes.PkmSpecies} gutterBottom>
-                                        {genus}
-                                    </Typography>
+                                <Typography variant="h5" className={classes.PkmSpecies} gutterBottom>
+                                    {genus}
+                                </Typography>
 
-                                    <Typography variant="body1" gutterBottom>
-                                        {cleanStr(description)}
-                                    </Typography>
-                                </div>
-                            </Grid>
-                        </Grid>
+                                <Typography variant="body1" gutterBottom>
+                                    {cleanStr(description)}
+                                </Typography>
+                            </div>
+                        </div>
+                        
                     </Grid>
 
                     <Grid item xs={12} md={12}>
