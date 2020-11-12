@@ -22,8 +22,8 @@ const useStyles = makeStyles((theme) => ({
     },
     menuButton: {
         marginRight: theme.spacing(2),
-        paddingLeft: '0px',
-        marginLeft: '-3px',
+        paddingLeft: '12px',
+        marginLeft: '-15px',
     },
     title: {
         display: 'none',
