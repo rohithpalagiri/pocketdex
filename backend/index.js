@@ -66,5 +66,5 @@ app.use(unknownEndpoint)
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
-    console.log(`this is a test ${PORT}`)
+    console.log(`Server is starting at ${PORT}`)
 })

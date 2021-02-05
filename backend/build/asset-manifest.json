@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1231a5ef.chunk.css",
+    "main.js": "/static/js/main.975a3bea.chunk.js",
+    "main.js.map": "/static/js/main.975a3bea.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.9928f2b1.js",
+    "runtime-main.js.map": "/static/js/runtime-main.9928f2b1.js.map",
+    "static/css/2.316749da.chunk.css": "/static/css/2.316749da.chunk.css",
+    "static/js/2.7f1b6332.chunk.js": "/static/js/2.7f1b6332.chunk.js",
+    "static/js/2.7f1b6332.chunk.js.map": "/static/js/2.7f1b6332.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.e7ea6ca75fea44a8e6a75667afbdfafe.js": "/precache-manifest.e7ea6ca75fea44a8e6a75667afbdfafe.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.316749da.chunk.css.map": "/static/css/2.316749da.chunk.css.map",
+    "static/css/main.1231a5ef.chunk.css.map": "/static/css/main.1231a5ef.chunk.css.map",
+    "static/js/2.7f1b6332.chunk.js.LICENSE.txt": "/static/js/2.7f1b6332.chunk.js.LICENSE.txt",
+    "static/media/female.svg": "/static/media/female.c4a4ae68.svg",
+    "static/media/male.svg": "/static/media/male.a69ec844.svg",
+    "static/media/physical.svg": "/static/media/physical.65ce3192.svg",
+    "static/media/pikachu-running.gif": "/static/media/pikachu-running.6689dc33.gif",
+    "static/media/pokeball.svg": "/static/media/pokeball.c6b3221b.svg",
+    "static/media/index.css": "/static/media/roboto-vietnamese-400-normal.a8be5b46.woff2",
+    "static/media/special.svg": "/static/media/special.30e34ffb.svg",
+    "static/media/status.svg": "/static/media/status.04daf9f5.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9928f2b1.js",
+    "static/css/2.316749da.chunk.css",
+    "static/js/2.7f1b6332.chunk.js",
+    "static/css/main.1231a5ef.chunk.css",
+    "static/js/main.975a3bea.chunk.js"
+  ]
+}
