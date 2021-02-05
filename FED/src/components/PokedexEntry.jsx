@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import StatsChart from './StatsChart';
 import QuickInfo from './QuickInfo';
+import EvolutionChain from './EvolutionChain';
 import Moves from './Moves';
 import TypeEffective from './TypeEffective'
 import userService from '../services/pokemon'
@@ -34,6 +35,7 @@ const PokedexEntry = () => {
 
     const [isLoaded, setIsLoaded] = useState(false)
     const [pokemon, setPokemon] = useState([]);
+    const [evolution, setEvolution] = useState([]);
     const [genus, setGenus] = useState("");
     const [types, setTypes] = useState([]);
     const [description, setDescription] = useState();
@@ -45,10 +47,14 @@ const PokedexEntry = () => {
 
         (async () => {
             await userService.getPkm(pokemonKey).then((response) => {
+                console.log(response);
                 setPokemon(response.pkm)
 
                 let pkm = response.pkm
                 let species = response.species
+
+                let evolutionChain = response.evolutionChain.chain;
+                setEvolution(evolutionChain);
 
                 let genera = species.genera.filter((x) => x.language.name === "en")
                 setGenus(genera[0].genus)
@@ -70,7 +76,7 @@ const PokedexEntry = () => {
                     let method = lastDataModule.move_learn_method.name;
 
                     return {
-                        move: x.move.name,
+                        move: name,
                         level: learnedAt,
                         method: method,
                     }
@@ -124,7 +130,7 @@ const PokedexEntry = () => {
                             <div className="pokedex-image">
                                 {pokemon.sprites.other["official-artwork"].front_default ?
                                     <img src={pokemon.sprites.other["official-artwork"].front_default} /> :
-                                    <div class="img-placeholder"></div>
+                                    <div className="img-placeholder"></div>
                                 }
                             </div>
 
@@ -162,6 +168,10 @@ const PokedexEntry = () => {
 
                             <Grid item xs={12} md={6}>
                                 <TypeEffective pkmTypes={types} />
+                            </Grid>
+
+                            <Grid item xs={12} md={6}>
+                                <EvolutionChain evolutionChain={evolution} />
                             </Grid>
                         </Grid>
 

@@ -33,7 +33,7 @@ const QuickInfo = ({ quickInfo }) => {
     const classes = useStyles();
 
     let genderRatio = (rate) => {
-        return (<><img class="info-icon" src={Male} /> {(rate / 8) * 100}% <img class="info-icon ml-1" src={Female} />  {(1 - (rate / 8)) * 100}%</>)
+        return (<><img className="info-icon" src={Male} /> {(rate / 8) * 100}% <img className="info-icon ml-1" src={Female} />  {(1 - (rate / 8)) * 100}%</>)
     }
 
     return (

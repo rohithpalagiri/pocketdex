@@ -125,7 +125,7 @@ const Moves = ({ moves }) => {
                                         <AccordionDetails className={classes.AccordionDetails}>
                                             <Grid container>
                                                 <Grid item xs={12}>
-                                                    <Typography class="mb-2 mt-0">
+                                                    <Typography className="mb-2 mt-0">
                                                         {foundMove.description.flavor_text}
                                                     </Typography>
                                                 </Grid>
@@ -133,8 +133,8 @@ const Moves = ({ moves }) => {
                                                     <Grid container>
                                                         <Grid className="align-center" item xs={12} md={3}>
                                                             {/* TODO Probably a better way to implement this */}
-                                                            
-                                                           {classType === 'physical' ?  <img class="class-icon" src={Physical} /> : <img class="class-icon" src={Special} />} {classType === 'physical' ? 'Physical' : 'Special'}
+
+                                                            {classType === 'physical' ? <img className="class-icon" src={Physical} /> : <img className="class-icon" src={Special} />} {classType === 'physical' ? 'Physical' : 'Special'}
                                                         </Grid>
                                                         <Grid item xs={12} md={3}>
                                                             <b>PP:</b> {foundMove.pp}

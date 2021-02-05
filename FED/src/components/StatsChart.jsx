@@ -1,5 +1,4 @@
 import React from 'react';
-import ApexCharts from 'apexcharts';
 import Chart from "react-apexcharts";
 import Typography from '@material-ui/core/Typography';
 
