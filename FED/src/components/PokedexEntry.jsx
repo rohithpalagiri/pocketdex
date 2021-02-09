@@ -170,9 +170,9 @@ const PokedexEntry = () => {
                                 <TypeEffective pkmTypes={types} />
                             </Grid>
 
-                            <Grid item xs={12} md={6}>
+                            {/* <Grid item xs={12} md={6}>
                                 <EvolutionChain evolutionChain={evolution} />
-                            </Grid>
+                            </Grid> */}
                         </Grid>
 
                         <Grid container>
