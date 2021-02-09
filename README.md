@@ -8,7 +8,7 @@ Installation and Development
 
 Pocketdex contains both the Front-End and Back-End components of the website. First install the dependencies in the following locations:
 
-Root Folder | ./FED | ./backend:
+**Root Folder** | **./FED** | **./backend**:
 
     npm install
 
