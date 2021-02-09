@@ -16,4 +16,6 @@ Return to the root folder and run:
 
     npm run dev
 
+**NOTE:** If the project does not automatically open a browser tab, manually going to localhost:3000 should pull it up.
+
 This site uses data provided by [PokéAPI](http://pokeapi.co/).
