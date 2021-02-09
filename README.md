@@ -1,7 +1,7 @@
 Pokedex.org ![project maintained](https://img.shields.io/maintenance/yes/2021?style=for-the-badge)
 ====
 
-A Pokédex built on React,Express and Material-UI [virtual-dom](https://github.com/Matt-Esch/virtual-dom), and web workers.
+A Pokédex built on [React](https://reactjs.org/docs/create-a-new-react-app.html),[Express](https://expressjs.com/en/starter/installing.html) and [Material-UI](https://material-ui.com/getting-started/installation/).
 
 Installation and Development
 ----
