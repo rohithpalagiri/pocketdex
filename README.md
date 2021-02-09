@@ -17,5 +17,3 @@ Return to the root folder and run:
     npm run dev
 
 This site uses data provided by [PokéAPI](http://pokeapi.co/).
-
-Thank you to [PokeAPI](http://pokeapi.co/) for their great API!
